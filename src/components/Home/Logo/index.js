@@ -1,28 +1,43 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap-trial'
-import DrawSVGPlugin from 'gsap-trial/DrawSVGPlugin'
 import LogoS from '../../../assets/images/logo-s.png'
 import './index.scss'
 
 const Logo = () => {
-  const bgRef = useRef()
-  const outlineLogoRef = useRef()
-  const solidLogoRef = useRef()
+  const bgRef = useRef(null);
+  const outlineLogoRef = useRef(null);
+  const solidLogoRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(DrawSVGPlugin)
+    const calculatePathLength = (element) => {
+      return element.getTotalLength();
+    };
 
-    gsap
-      .timeline()
-      .to(bgRef.current, {
-        duration: 1,
-        opacity: 1,
-      })
-      .from(outlineLogoRef.current, {
-        drawSVG: 0,
-        duration: 2,
-      })
+    // Assuming outlineLogoRef.current is your SVG path element
+    const pathLength = calculatePathLength(outlineLogoRef.current);
 
+    // Set initial styles for the SVG path
+    gsap.set(outlineLogoRef.current, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength,
+    });
+
+    // GSAP timeline for animations
+    const tl = gsap.timeline();
+
+    tl.to(bgRef.current, {
+      duration: 1,
+      opacity: 1,
+    })
+    .fromTo(outlineLogoRef.current, {
+      strokeDashoffset: pathLength,
+    }, {
+      strokeDashoffset: 0,
+      duration: 2,
+      ease: "none",
+    });
+
+    // Animation for the solid logo appearance
     gsap.fromTo(
       solidLogoRef.current,
       {
@@ -33,8 +48,13 @@ const Logo = () => {
         delay: 2,
         duration: 2,
       }
-    )
-  }, [])
+    );
+
+    // Cleanup function to prevent memory leaks
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className="logo-container" ref={bgRef}>
