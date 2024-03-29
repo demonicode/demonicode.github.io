@@ -33,7 +33,7 @@ const Logo = () => {
       strokeDashoffset: pathLength,
     }, {
       strokeDashoffset: 0,
-      duration: 2,
+      duration: 5,
       ease: "none",
     });
 
@@ -45,7 +45,7 @@ const Logo = () => {
       },
       {
         opacity: 1,
-        delay: 2,
+        delay: 2.5,
         duration: 2,
       }
     );

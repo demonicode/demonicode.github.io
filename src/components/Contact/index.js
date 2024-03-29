@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Loader from 'react-loaders'
-// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import AnimatedLetters from '../AnimatedLetters'
@@ -45,7 +45,7 @@ const Contact = () => {
               idx={15}
             />
           </h1>
-          <p>
+          <p className="contact-text">
             I am interested in tech opportunities - especially on ambitious
             or large projects. However, if you have any other requests or
             questions, don't hesitate to contact me using below form either.
@@ -89,20 +89,20 @@ const Contact = () => {
         <div className="info-map">
           Shikhar Bansal,
           <br />
-          New York,
+          Stony Brook, New York,
           <br />
           United States fo America <br />
           <br />
           <span>shikharbansal111@gmail.com</span>
         </div>
-        {/* <div className="map-wrap">
-          <MapContainer center={[44.96366, 19.61045]} zoom={13}>
+        <div className="map-wrap">
+          <MapContainer center={[40.907238, -73.109867]} zoom={13}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[44.96366, 19.61045]}>
+            <Marker position={[40.907238, -73.109867]}>
               <Popup>Shikhar lives here, come over for a cup of coffee :)</Popup>
             </Marker>
           </MapContainer>
-        </div> */}
+        </div>
       </div>
       <Loader type="pacman" />
     </>

@@ -1,6 +1,7 @@
 .contact-form {
   width: 100%;
   margin-top: 20px;
+  margin-left: 20px;
 
   ul {
     padding: 0;
@@ -69,14 +70,14 @@
     text-transform: uppercase;
     float: right;
     text-align: center;
-    margin-right: 10px;
+    // margin-right: 0px;
   }
 }
 
 .map-wrap {
   background: rgba(8, 253, 216, 0.1);
   float: right;
-  width: 53%;
+  width: 51%;
   height: 115%;
   margin-top: -3%;
 }
@@ -93,8 +94,8 @@
 .info-map {
   position: absolute;
   background: #000;
-  top: 50px;
-  right: 30%;
+  bottom: -10px;
+  right: 1%;
   z-index: 999999;
   width: 267px;
   padding: 20px;
@@ -113,6 +114,10 @@
       color: #ffd700;
     }
   }
+}
+
+.contact-text {
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 1200px) {
