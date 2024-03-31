@@ -4,9 +4,8 @@ import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
 // import { getDocs, collection } from 'firebase/firestore';
 // import { db } from '../../firebase';
-import data from '../../data/portfolio.json'
 
-const Portfolio = () => { 
+const Experience = () => { 
     const [letterClass, setLetterClass] = useState('text-animate');
     const [portfolio, setPortfolio] = useState([]);
 
@@ -20,11 +19,9 @@ const Portfolio = () => {
         }
     });
 
-    useEffect(() => {
-        // getPortfolio();
-        console.log(data);
-        setPortfolio(data.portfolio);
-    }, []);
+    // useEffect(() => {
+    //     getPortfolio();
+    // }, []);
 
     // const getPortfolio = async () => {
     //     const querySnapshot = await getDocs(collection(db, 'portfolio'));
@@ -39,19 +36,16 @@ const Portfolio = () => {
                         return (
                             <div className="image-box" key={idx}>
                                 <img 
-                                    src={port.cover}
-                                    className="portfolio-image"
-                                    alt="portfolio" 
-                                />
+                                src={port.image}
+                                className="portfolio-image"
+                                alt="portfolio" />
                                 <div className="content">
-                                    <p className="title">{port.title}</p>
+                                    <p className="title">{port.name}</p>
                                     <h4 className="description">{port.description}</h4>
                                     <button
                                         className="btn"
                                         onClick={() => window.open(port.url)}
-                                    >
-                                        View
-                                    </button>
+                                    >View</button>
                                 </div>
                             </div>
                         )
@@ -68,7 +62,7 @@ const Portfolio = () => {
                 <h1 className="page-title">
                     <AnimatedLetters
                         letterClass={letterClass}
-                        strArray={"Projects".split("")}
+                        strArray={"Experience".split("")}
                         idx={15}
                     />
                 </h1>
@@ -79,4 +73,4 @@ const Portfolio = () => {
     );
 }
 
-export default Portfolio;
+export default Experience;

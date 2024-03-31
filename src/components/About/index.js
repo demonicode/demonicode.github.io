@@ -8,7 +8,7 @@ import AnimatedLetters from '../AnimatedLetters'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './index.scss'
 
-const About = () => {
+const About = ({id}) => {
   const [letterClass, setLetterClass] = useState('text-animate')
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const About = () => {
   }, [])
 
   return (
-    <>
+    <div id={id}>
       <div className="container about-page">
         <div className="text-zone">
           <h1>
@@ -63,7 +63,7 @@ const About = () => {
         </div>
       </div>
       <Loader type="pacman" />
-    </>
+    </div>
   )
 }
 
